@@ -1,6 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 const RewardCard = ({
   title,
@@ -13,56 +17,55 @@ const RewardCard = ({
   amountColor = '#fff',
 }) => {
   return (
-    <LinearGradient
-      colors={gradientColors}
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 1}}
-      style={[
-        styles.card,
-        isHighlighted && styles.highlighted,
-        isBlurred && styles.blurred,
-      ]}>
-      <View style={styles.content}>
-        <View
-          style={[
-            styles.crown,
-            {backgroundColor: crownColor},
-            isHighlighted && styles.crownHighlighted,
-          ]}
-        />
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subtitle}>{subtitle}</Text>
+    <TouchableOpacity activeOpacity={0.7}>
+      <LinearGradient
+        colors={gradientColors}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 1}}
+        style={[styles.card, isHighlighted && styles.highlighted]}>
+        <View style={styles.content}>
+          <Image
+            source={require('../../assets/icons/crown.png')}
+            style={[
+              styles.crown,
+              {tintColor: crownColor},
+              isHighlighted && styles.crownHighlighted,
+            ]}
+          />
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.subtitle}>{subtitle}</Text>
+          </View>
         </View>
-      </View>
-      <Text
-        style={[
-          styles.amount,
-          {color: amountColor},
-          isBlurred && styles.amountBlurred,
-        ]}>
-        {amount}
-      </Text>
-    </LinearGradient>
+        <Text
+          style={[
+            styles.amount,
+            {color: amountColor},
+            isBlurred && styles.amountBlurred,
+          ]}>
+          {amount}
+        </Text>
+      </LinearGradient>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 18,
-    paddingVertical: 16,
-    paddingHorizontal: 16,
+    borderRadius: wp(4.5),
+    paddingVertical: hp(2),
+    paddingHorizontal: wp(4),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#0f2d70',
-    marginBottom: 12,
+    backgroundColor: 'rgba(182, 191, 218, 0.2)',
+    marginBottom: hp(1.5),
   },
   highlighted: {
     shadowColor: '#c03cff',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: {width: 0, height: hp(1.2)},
     shadowOpacity: 0.35,
-    shadowRadius: 20,
+    shadowRadius: hp(2.5),
     elevation: 8,
   },
   blurred: {
@@ -74,36 +77,36 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   crown: {
-    width: 36,
-    height: 26,
-    borderRadius: 6,
-    marginRight: 12,
+    width: wp(9),
+    height: hp(3.2),
+    borderRadius: wp(1.5),
+    marginRight: wp(3),
   },
   textContainer: {
     flex: 1,
   },
   title: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: hp(2),
     fontWeight: '700',
   },
   subtitle: {
     color: '#cfd5ec',
-    fontSize: 13,
-    marginTop: 2,
+    fontSize: hp(1.6),
+    marginTop: hp(0.25),
   },
   amount: {
-    fontSize: 18,
+    fontSize: hp(2.25),
     fontWeight: '800',
   },
   amountBlurred: {
-    opacity: 0.7,
+    opacity: 0.2,
   },
   crownHighlighted: {
     shadowColor: '#ea8bf5',
-    shadowOffset: {width: 0, height: 6},
+    shadowOffset: {width: 0, height: hp(0.75)},
     shadowOpacity: 0.5,
-    shadowRadius: 10,
+    shadowRadius: hp(1.2),
     elevation: 5,
   },
 });

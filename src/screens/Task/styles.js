@@ -1,18 +1,22 @@
 import {StyleSheet} from 'react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#0b1426',
+    backgroundColor: '#101C3A',
   },
   container: {
     flex: 1,
-    padding: 20,
+    padding: wp(4),
   },
   scrollContent: {
-    paddingBottom: 30,
+    paddingBottom: hp(2),
   },
   rewardList: {
-    marginBottom: 26,
+    marginBottom: hp(2),
   },
 });

@@ -7,6 +7,7 @@ import RewardCard from '../../components/RewardCard';
 import NextCheckInTimer from '../../components/NextCheckInTimer';
 import CheckInButton from '../../components/CheckInButton';
 import {styles} from './styles';
+import CustomButton from '../../components/CheckInButton';
 
 const rewards = [
   {
@@ -16,7 +17,7 @@ const rewards = [
     gradientColors: ['#1946d2', '#102c8f'],
     crownColor: '#f7c948',
     isBlurred: true,
-    amountColor: '#fff',
+    amountColor: '#f7c948',
   },
   {
     title: 'Phantom Rewards',
@@ -25,7 +26,7 @@ const rewards = [
     gradientColors: ['#c03cff', '#5831f8'],
     crownColor: '#ea8bf5',
     isHighlighted: true,
-    amountColor: '#fff',
+    amountColor: '#ea8bf5',
   },
   {
     title: 'Oracle Rewards',
@@ -33,7 +34,7 @@ const rewards = [
     amount: '$10,634',
     gradientColors: ['#1946d2', '#102c8f'],
     crownColor: '#e7e9f9',
-    amountColor: '#fff',
+    amountColor: '#e7e9f9',
   },
   {
     title: 'Creator Rewards',
@@ -48,11 +49,10 @@ const rewards = [
 const Task = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="light-content" backgroundColor="#0b182b" />
       <LinearGradient
-        colors={['#111f3a', '#0b1426']}
+        colors={['#1946d2', '#102c8f']}
         start={{x: 0, y: 0}}
-        end={{x: 0, y: 1}}
+        end={{x: 0, y: 0.3}}
         style={styles.container}>
         <ScrollView
           contentContainerStyle={styles.scrollContent}
@@ -79,7 +79,7 @@ const Task = () => {
 
           <NextCheckInTimer time="00:00:00" />
 
-          <CheckInButton />
+          <CustomButton text={'Check-In-Now'} />
         </ScrollView>
       </LinearGradient>
     </SafeAreaView>

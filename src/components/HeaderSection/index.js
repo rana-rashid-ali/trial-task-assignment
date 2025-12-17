@@ -1,5 +1,9 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 const HeaderSection = ({
   streakDays = 22,
@@ -27,23 +31,23 @@ const HeaderSection = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 20,
+    marginBottom: hp(2.5),
   },
   streakTitle: {
     color: '#eef1ff',
-    fontSize: 32,
+    fontSize: hp(4),
     fontWeight: '700',
     textAlign: 'center',
-    marginBottom: 12,
+    marginBottom: hp(1.5),
   },
   subtitle: {
     color: '#b6bfda',
-    fontSize: 15,
-    lineHeight: 22,
+    fontSize: hp(1.9),
+    lineHeight: hp(2.7),
     textAlign: 'center',
   },
   highlight: {
-    color: '#c03cff',
+    color: '#ea8bf5',
     fontWeight: '700',
   },
 });
